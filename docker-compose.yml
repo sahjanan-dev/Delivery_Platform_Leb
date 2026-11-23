@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    container_name: delivery-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: delivery-platform-leb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
