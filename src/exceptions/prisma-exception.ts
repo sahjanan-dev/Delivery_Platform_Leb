@@ -3,7 +3,8 @@ import { Prisma } from "@/app/generated/prisma/client";
 // Prisma error codes we react to:
 //   P2002 = unique constraint failed (e.g. email already used)
 //   P2025 = record to update/delete was not found
-export function isPrismaError(err: unknown, code: "P2002" | "P2025"): boolean {
+//   P2003 = foreign key failed (e.g. the userId does not exist)
+export function isPrismaError(err: unknown, code: "P2002" | "P2025" | "P2003"): boolean {
   return err instanceof Prisma.PrismaClientKnownRequestError && err.code === code;
 }
 
